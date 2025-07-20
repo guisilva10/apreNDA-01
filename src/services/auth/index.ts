@@ -3,10 +3,13 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { db } from "../database/prisma";
 import {
   AUTH_SECRET,
+  GITHUB_CLIENT_ID,
+  GITHUB_CLIENT_SECRET,
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
 } from "@/types/env";
 import Google from "next-auth/providers/google";
+import GitHub from "next-auth/providers/github";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(db),
@@ -20,6 +23,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Google({
       clientId: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
+    }),
+    GitHub({
+      clientId: GITHUB_CLIENT_ID,
+      clientSecret: GITHUB_CLIENT_SECRET,
     }),
   ],
   callbacks: {
