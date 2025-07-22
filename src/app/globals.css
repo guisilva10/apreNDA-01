@@ -118,3 +118,28 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      #7f22fe,
+      #7f22fe,
+      #7f22fe,
+      #7f22fe
+    ); /* Tons de verde intenso */
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(#7f22fe, #7f22fe, #7f22fe, #7f22fe);
+  }
+}

@@ -8,18 +8,27 @@ datasource db {
 }
 
 model User {
-  id            String          @id @default(cuid())
+  id            String     @id @default(cuid())
   name          String?
-  email         String?         @unique
+  email         String?    @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
-  // Optional for WebAuthn support
+  projects      Projects[]
+
   Authenticator Authenticator[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Projects {
+  id          String  @id @default(cuid())
+  name        String?
+  description String?
+  userId      String
+  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Account {

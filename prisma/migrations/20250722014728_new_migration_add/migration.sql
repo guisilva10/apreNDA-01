@@ -10,6 +10,15 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
+CREATE TABLE "Projects" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "name" TEXT,
+    "description" TEXT,
+    "userId" TEXT NOT NULL,
+    CONSTRAINT "Projects_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- CreateTable
 CREATE TABLE "Account" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "userId" TEXT NOT NULL,
